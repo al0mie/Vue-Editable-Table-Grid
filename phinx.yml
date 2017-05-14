@@ -15,7 +15,7 @@ environments:
         charset: utf8
 
     development:
-               adapter: mysql
+        adapter: mysql
         host: localhost
         name: development_db
         user: root
