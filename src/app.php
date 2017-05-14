@@ -24,6 +24,10 @@ $app->before(function (Request $request) {
 
 $app->register(new ServiceControllerServiceProvider());
 
+$app->register(new Silex\Provider\TwigServiceProvider(), array(
+    'twig.path' => __DIR__.'/../resources/views',
+));
+
 $app->register(new DoctrineServiceProvider(), array(
   "db.options" => $app["db.options"]
 ));
