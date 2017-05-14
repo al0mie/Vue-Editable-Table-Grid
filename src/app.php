@@ -22,8 +22,6 @@ $app->before(function (Request $request) {
     }
 });
 
-$app->register(new \Euskadi31\Silex\Provider\CorsServiceProvider);
-
 $app->register(new ServiceControllerServiceProvider());
 
 $app->register(new DoctrineServiceProvider(), array(
