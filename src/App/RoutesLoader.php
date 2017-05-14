@@ -4,10 +4,21 @@ namespace App;
 
 use Silex\Application;
 
+/**
+ * Class RoutesLoader
+ * @package App
+ */
 class RoutesLoader
 {
+    /**
+     * @var Application
+     */
     private $app;
 
+    /**
+     * RoutesLoader constructor.
+     * @param Application $app
+     */
     public function __construct(Application $app)
     {
         $this->app = $app;
@@ -15,24 +26,34 @@ class RoutesLoader
 
     }
 
+    /**
+     * Instance of controllers
+     */
     private function instantiateControllers()
     {
-        $this->app['notes.controller'] = function() {
-            return new Controllers\NotesController($this->app['notes.service']);
+        $this->app['user.controller'] = function() {
+            return new Controllers\UserController($this->app['user.service']);
         };
     }
 
+    /**
+     * Bind routes with controllers
+     */
     public function bindRoutesToControllers()
     {
-        $api = $this->app["controllers_factory"];
+        $api = $this->app['controllers_factory'];
 
-        $api->get('/notes', "notes.controller:getAll");
-        $api->get('/notes/{id}', "notes.controller:getOne");
-        $api->post('/notes', "notes.controller:save");
-        $api->put('/notes/{id}', "notes.controller:update");
-        $api->delete('/notes/{id}', "notes.controller:delete");
+        $api->get('/users', 'user.controller:getAll');
+        $api->get('/users/{id}', 'user.controller:getOne');
+        $api->post('/users', 'user.controller:save');
+        $api->patch('/users/{id}', 'user.controller:update');
+        $api->delete('/users/{id}', 'user.controller:delete');
 
-        $this->app->mount($this->app["api.endpoint"].'/'.$this->app["api.version"], $api);
+        $this->app->mount($this->app['api.endpoint'].'/', $api);
+
+        $this->app->get('/', function () {
+            return $this->app['twig']->render('index.twig');
+        });
     }
 }
 
