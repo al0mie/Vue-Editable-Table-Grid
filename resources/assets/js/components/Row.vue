@@ -64,8 +64,7 @@
             update(oldItem, newItem) {
                 this.edit();
                 axios.patch(this.apiUrl + oldItem.id, newItem).then(response => {
-                    console.log(response.data);
-                    this.$emit('update', newItem);
+                    this.$emit('update', response.data);
                     this.cancelEdit();
                 }, (response) => {
                     alert('Invalid data');

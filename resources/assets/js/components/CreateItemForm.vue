@@ -36,13 +36,11 @@
         },
         methods: {
             edit: function() {
-                console.log(this.fields);
                 this.create = true;
             },
 
             save: function() {
                 axios.post(this.apiUrl, this.createForm).then(response => {
-                    console.log(response.data);
                     this.$emit('save', response.data);
                     this.cancel();
                 }, (response) => {
