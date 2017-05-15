@@ -40,8 +40,13 @@
             },
 
             save: function() {
+                // send required to store a new item
                 axios.post(this.apiUrl, this.createForm).then(response => {
+
+                    //trigger event to collection
                     this.$emit('save', response.data);
+
+                    // clear form
                     this.cancel();
                 }, (response) => {
                     alert('Invalid data');

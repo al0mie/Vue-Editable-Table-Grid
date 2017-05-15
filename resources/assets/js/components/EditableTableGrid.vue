@@ -58,8 +58,11 @@
             }
         },
         mounted() {
+            //get unified fields
             this.normalizeFields();
+            //get unified api url
             this.normalizeUrl();
+            //load data
             this.loadData();
         },
         methods: {
@@ -74,6 +77,7 @@
             normalizeFields () {
                 this.tableFields = [];
 
+                //check fields
                 if (typeof(this.fields) === 'undefined') {
                     console.error('You need to provide "fields" prop.');
                     return;
@@ -81,6 +85,8 @@
 
                 let self = this;
                 let obj;
+
+                //normilize to one style
                 this.fields.forEach(function (field, i) {
                     if (typeof (field) === 'string') {
                         obj = {
@@ -111,14 +117,17 @@
             },
 
             destroy: function (item) {
+                // destroy from the collection
                 let index = this.tableData.indexOf(item);
                 this.tableData.splice(index, 1);
             },
             update: function (item) {
+                // update in the collection
                 let index = this.tableData.indexOf(item);
                 this.tableData[index] = item;
             },
             save: function (item) {
+                // add a new item to the collection
                 this.tableData.push(item);
             }
         }

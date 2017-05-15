@@ -50,6 +50,7 @@
                 this.editMode = true;
                 let self = this;
 
+                // get fields for the form
                 this.fields.forEach(function (field, i) {
                     self.editForm[field.name] = self.item[field.name];
                 });
@@ -57,12 +58,14 @@
             cancelEdit() {
                 this.editMode = false;
                 let self = this;
+                // clear the form
                 this.fields.forEach(function (field, i) {
                     self.editForm[field.name] = '';
                 });
             },
             update(oldItem, newItem) {
                 this.edit();
+                // send request to update data
                 axios.patch(this.apiUrl + oldItem.id, newItem).then(response => {
                     this.$emit('update', response.data);
                     this.cancelEdit();
@@ -71,6 +74,7 @@
                 });
             },
             destroy(item) {
+                // send request to delete item
                 axios.delete(this.apiUrl + item.id).then(response => {
                     this.$emit('destroy', item);
             }, (response) => {
