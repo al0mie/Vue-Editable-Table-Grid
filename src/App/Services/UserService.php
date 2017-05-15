@@ -14,9 +14,9 @@ class UserService extends BaseService
      * @param $id
      * @return array
      */
-    public function getOne($id) : array
+    public function getOne($id)
     {
-        return $this->db->fetchAssoc('SELECT * FROM users WHERE "id" = ? ', [(int)$id]);
+        return $this->db->fetchAssoc('SELECT * FROM users WHERE id = ? ', [(int)$id]);
     }
 
     /**
@@ -45,7 +45,7 @@ class UserService extends BaseService
      * @param int $id
      * @param array $user
      */
-    public function update($id, $user) : array
+    public function update($id, $user)
     {
         $this->db->update('users', $user, ['id' => $id]);
         return $this->getOne($id);
