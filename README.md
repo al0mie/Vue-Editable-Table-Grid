@@ -5,11 +5,14 @@ After download from the root folder of the project, run the following commands t
 
 You need at least php **7.0*** with **mysql extension** enabled and **Composer**
     
-    composer install 
+    composer install
+    npm install
     php -S 0:9001 -t web/
 
     
-Your api is now available at http://localhost:9001/v1.
+Your api is now available at http://localhost:9001.
+
+For building js resources, use webpack
 
 To config database, go to config/prod.php
 
@@ -27,12 +30,19 @@ $app['db.options'] = array(
 
 `vendor/bin/phpunit`
 
+###
 
-#### What you will get
-The api routes
+If you want to creta basic db structure and seeds you can use phinx, but before you must add your db credentials in phinx.yml
+
+`php vendor/bin/phinx migrate`
+
+`php vendor/bin/phinx seed:run`
+
+
+#### Api routes
 
 	GET  ->   http://localhost:9001/api/users
     GET  ->   http://localhost:9001/api/users/{id}
 	POST ->   http://localhost:9001/api/users
-	PATCH ->   http://localhost:9001/api/users/{id}
+	PATCH ->  http://localhost:9001/api/users/{id}
 	DELETE -> http://localhost:9001/api/users/{id}
