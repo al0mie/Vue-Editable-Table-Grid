@@ -14,7 +14,7 @@ class UserTableMigration extends AbstractMigration
             ->addColumn('email', 'string', array('limit' => 40))
             ->addColumn('first_name', 'string', array('limit' => 30))
             ->addColumn('last_name', 'string', array('limit' => 30))
-            ->addColumn('address', 'string', array('limit' => 230))
+            ->addColumn('address', 'string', array('limit' => 230, 'null' => true))
             ->addIndex(array('username', 'email'), array('unique' => true))
             ->save();
     }

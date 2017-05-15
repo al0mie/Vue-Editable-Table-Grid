@@ -21,23 +21,33 @@
                 fields: [
                     {
                         title: 'Username',
-                        name: 'username'
+                        name: 'username',
+                        editable: true,
+                        created: true
                     },
                     {
                         title: 'Email',
-                        name: 'email'
+                        name: 'email',
+                        editable: true,
+                        created: true
                     },
                     {
                         title: 'First name',
-                        name: 'first_name'
+                        name: 'first_name',
+                        editable: false,
+                        created: true
                     },
                     {
                         title: 'Last name',
-                        name: 'last_name'
+                        name: 'last_name',
+                        editable: true,
+                        created: true
                     },
                     {
                         title: 'address',
-                        name: 'address'
+                        name: 'address',
+                        editable: true,
+                        created: false
                     }
                 ]
             }

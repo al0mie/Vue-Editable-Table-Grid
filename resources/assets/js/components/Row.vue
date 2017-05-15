@@ -3,7 +3,7 @@
         <template v-for="(field, index) in fields">
             <td>
                 <input type="text"  class="form-control"
-                       v-model="item[field.name]" v-if="editMode"
+                       v-model="item[field.name]" v-if="editMode && field.editable"
                 >
                 <span v-else>{{ item[field.name] }}</span>
             </td>

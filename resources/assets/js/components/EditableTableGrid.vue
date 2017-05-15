@@ -92,13 +92,17 @@
                         obj = {
                             name: field,
                             title: field,
-                            titleClass: ''
+                            titleClass: '',
+                            editable: true,
+                            created: true
                         }
                     } else {
                         obj = {
                             name: field.name,
                             title: (field.title === undefined) ? field.field.name : field.title,
-                            titleClass: (field.titleClass === undefined) ? '' : field.titleClass
+                            titleClass: (field.titleClass === undefined) ? '' : field.titleClass,
+                            editable: (field.editable === undefined) ? true : field.editable,
+                            created: (field.created === undefined) ? true : field.created,
                         }
                     }
                     self.tableFields.push(obj)
