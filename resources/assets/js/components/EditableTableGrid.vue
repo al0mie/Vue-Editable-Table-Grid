@@ -94,7 +94,7 @@
                             title: field,
                             titleClass: '',
                             editable: true,
-                            created: true
+                            creatable: true
                         }
                     } else {
                         obj = {
@@ -102,7 +102,7 @@
                             title: (field.title === undefined) ? field.field.name : field.title,
                             titleClass: (field.titleClass === undefined) ? '' : field.titleClass,
                             editable: (field.editable === undefined) ? true : field.editable,
-                            created: (field.created === undefined) ? true : field.created,
+                            creatable: (field.creatable === undefined) ? true : field.creatable
                         }
                     }
                     self.tableFields.push(obj)

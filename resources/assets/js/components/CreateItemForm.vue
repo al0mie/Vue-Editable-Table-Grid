@@ -6,7 +6,7 @@
 
         <form v-if="create">
             <div v-for="(field, index) in fields">
-                <div v-if="field.created">
+                <div v-if="field.creatable">
                     <label :for="field.name">{{ field.title }}</label>
                     <input type="text"  class="form-control"
                            v-model="createForm[field.name]"

@@ -23,31 +23,31 @@
                         title: 'Username',
                         name: 'username',
                         editable: true,
-                        created: true
+                        creatable: true
                     },
                     {
                         title: 'Email',
                         name: 'email',
                         editable: true,
-                        created: true
+                        creatable: true
                     },
                     {
                         title: 'First name',
                         name: 'first_name',
                         editable: false,
-                        created: true
+                        creatable: true
                     },
                     {
                         title: 'Last name',
                         name: 'last_name',
                         editable: true,
-                        created: true
+                        creatable: true
                     },
                     {
                         title: 'address',
                         name: 'address',
                         editable: true,
-                        created: false
+                        creatable: false
                     }
                 ]
             }
