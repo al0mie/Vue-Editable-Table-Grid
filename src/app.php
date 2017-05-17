@@ -32,12 +32,12 @@ $app->register(new DoctrineServiceProvider(), array(
     'db.options' => $app['db.options']
 ));
 
-$app->register(new HttpCacheServiceProvider(), array("http_cache.cache_dir" => ROOT_PATH . "/storage/cache",));
+$app->register(new HttpCacheServiceProvider(), array("http_cache.cache_dir" => ROOT_PATH . '/storage/cache',));
 
 $app->register(new MonologServiceProvider(), array(
-    "monolog.logfile" => ROOT_PATH . "/storage/logs/" . Carbon::now('Europe/London')->format("Y-m-d") . ".log",
-    "monolog.level" => $app["log.level"],
-    "monolog.name" => "application"
+    'monolog.logfile' => ROOT_PATH . '/storage/logs/' . Carbon::now('Europe/London')->format('Y-m-d') . '.log',
+    'monolog.level' => $app['log.level'],
+    'monolog.name' => 'application'
 ));
 
 //load services
@@ -51,7 +51,7 @@ $routesLoader->bindRoutesToControllers();
 $app->error(function (\Exception $e, $code) use ($app) {
     $app['monolog']->addError($e->getMessage());
     $app['monolog']->addError($e->getTraceAsString());
-    return new JsonResponse(array("statusCode" => $code, "message" => $e->getMessage(), "stacktrace" => $e->getTraceAsString()));
+    return new JsonResponse(array('statusCode' => $code, 'message' => $e->getMessage(), 'stacktrace' => $e->getTraceAsString()));
 });
 
 return $app;

@@ -1,16 +1,30 @@
 <?php
 
 namespace Tests\Services;
+
 use Silex\Application;
 use Silex\Provider\DoctrineServiceProvider;
 use App\Services\UserService;
 
-
+/**
+ * Class UserServiceTest
+ * @package Tests\Services
+ */
 class UserServiceTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var User service
+     */
     private $userService;
+
+    /**
+     * @var Application
+     */
     private $app;
 
+    /**
+     * initialize params
+     */
     public function setUp()
     {
         $this->app = new Application();
@@ -41,6 +55,9 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase
         $stmt->execute();
     }
 
+    /**
+     * Test get one method
+     */
     public function testGetOne()
     {
         $data = $this->userService->getOne(1);
@@ -51,12 +68,18 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('address', $data['address']);
     }
 
+    /**
+     * Test get all method
+     */
     public function testGetAll()
     {
         $data = $this->userService->getAll();
         $this->assertNotNull($data);
     }
 
+    /**
+     * Test create a new item
+     */
     function testSave()
     {
         $user = [
@@ -66,11 +89,14 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase
             'last_name' => 'last_name',
             'address' => 'address'
         ];
-        $data = $this->userService->save($user);
+        $this->userService->save($user);
         $data = $this->userService->getAll();
         $this->assertEquals(2, count($data));
     }
 
+    /**
+     * Test update an item
+     */
     function testUpdate()
     {
         $user = [
@@ -97,6 +123,9 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('new_address', $data[0]['address']);
     }
 
+    /**
+     * Test delete method
+     */
     function testDelete()
     {
         $user = [
@@ -112,6 +141,9 @@ class UserServiceTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, count($data));
     }
 
+    /**
+     * roll back the table
+     */
     public function tearDown()
     {
         $stmt = $this->app['db']->prepare("DROP TABLE users;");
