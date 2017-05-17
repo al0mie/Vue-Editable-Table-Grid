@@ -1,15 +1,18 @@
 # Silex Simple REST and vue data table components
 
+Just build a data table with rest api support.
+
+![Data table image](https://preview.ibb.co/gXkDbQ/Screenshot_3.png)
 #### How do I run it?
 After download from the root folder of the project, run the following commands to install the php dependencies, import some data, and run a local php server.
 
 You need at least php **7.0*** with **mysql extension** enabled and **Composer**
-    
+
     composer install
     npm install
     php -S 0:9001 -t web/
 
-    
+
 Your api is now available at http://localhost:9001.
 
 For building js resources, use webpack
@@ -32,7 +35,7 @@ $app['db.options'] = array(
 
 ###
 
-If you want to creta basic db structure and seeds you can use phinx, but before you must add your db credentials in phinx.yml
+If you want to create a basic db structure and seeds you can use phinx, but before you must add your db credentials in phinx.yml
 
 `php vendor/bin/phinx migrate`
 
