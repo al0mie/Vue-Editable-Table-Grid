@@ -3,6 +3,9 @@
        <editable-table-grid :apiUrl="apiUrl"
                  :fields="fields"
                  :classes="classes"
+                 :editable="editable"
+                 :deletable="deletable"
+                 :creatable="creatable"
        ></editable-table-grid>
    </div>
 </template>
@@ -18,6 +21,9 @@
             return {
                 apiUrl: '/api/users',
                 classes: 'table table-bordered',
+                editable: true,  // items could be modified
+                creatable: true, // items could be created
+                deletable: true, // items could be deleted
                 fields: [
                     {
                         title: 'Username',

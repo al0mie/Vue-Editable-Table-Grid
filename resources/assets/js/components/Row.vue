@@ -8,27 +8,27 @@
                 <span v-else>{{ item[field.name] }}</span>
             </td>
         </template>
-        <td>
+        <td v-if="editable || deletable">
             <button type="button" class="btn btn-info"
-                    v-on:click="edit" v-if="!editMode"
+                    v-on:click="edit" v-if="!editMode && editable"
             >
                 Edit
             </button>
 
             <button type="button" class="btn btn-default"
-                    v-on:click="cancelEdit" v-if="editMode"
+                    v-on:click="cancelEdit" v-if="editMode && editable"
             >
                 Cancel
             </button>
 
             <button type="button" class="btn btn-primary"
-                    v-on:click="update(item, editForm)" v-if="editMode"
+                    v-on:click="update(item, editForm)" v-if="editMode && editable"
             >
                 update
             </button>
 
             <button type="button" class="btn btn-danger"
-                    v-on:click="destroy(item)" v-if="!editMode"
+                    v-on:click="destroy(item)" v-if="!editMode && deletable"
             >
                 Delete
             </button>
@@ -38,7 +38,7 @@
 
 <script>
     export default {
-        props:['item', 'fields', 'apiUrl'],
+        props:['item', 'fields', 'apiUrl', 'editable', 'deletable'],
         data() {
             return {
                 editMode: false,

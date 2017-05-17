@@ -14,7 +14,7 @@
 
             <tbody v-cloak class="vuetable-body">
                 <template v-for="(item, index) in tableData">
-                    <row :item="item" :fields="tableFields" :apiUrl="resourceUrl"
+                    <row :item="item" :fields="tableFields" :apiUrl="resourceUrl" :deletable="deletable" :editable="editable"
                           v-on:destroy="destroy"
                           v-on:update="update"
                     ></row>
@@ -22,7 +22,7 @@
             </tbody>
         </table>
         <br>
-        <create-item-form :fields="tableFields" :apiUrl="apiUrl" v-on:save="save"></create-item-form>
+        <create-item-form v-if="creatable" :fields="tableFields" :apiUrl="apiUrl" v-on:save="save"></create-item-form>
     </div>
 </template>
 
@@ -31,6 +31,7 @@
     import Row from './Row.vue';
 
     export default {
+
         components: {
             'row': Row,
             'create-item-form': CreateItemForm
@@ -48,6 +49,21 @@
                 type: String,
                 required: false,
                 default: 'table table-grid'
+            },
+            editable: {
+                type: Boolean,
+                required: false,
+                default: true
+            },
+            creatable: {
+                type: Boolean,
+                required: false,
+                default: true
+            },
+            deletable: {
+                type: Boolean,
+                required: false,
+                default: true
             }
         },
         data() {
